@@ -11,10 +11,12 @@ class Database():
 
     def __insert(self, insert_data):
         
+        print(f"Got {len(insert_data)} data")
+
         data = []
 
         for url, title, desc, article in insert_data:            
-            if article is None:
+            if not article:
                 print("Article is None... Continuing...")
                 continue
         
@@ -25,7 +27,12 @@ class Database():
                 'article': article
             })
         
-        res = self.collection.insert_many(data)
+        print(f"Inserted {len(data)}")
+
+        if data:
+            res = self.collection.insert_many(data)
+        else:
+            res = None
 
         print(f"Data inserted. Result: {res}") 
 
