@@ -2,6 +2,9 @@ import requests
 from lxml.html.soupparser import fromstring
 
 def scrape_abc(url):
+
+    print(f"Scraping {url}")
+
     try:
         req = requests.get(url)
 
@@ -20,6 +23,9 @@ def scrape_abc(url):
 
 
 def scrape_fox(url):
+
+    print(f"Scraping {url}")
+
     try:
         req = requests.get(url)
 
@@ -38,6 +44,9 @@ def scrape_fox(url):
 
 
 def scrape_cbs(url):
+   
+    print(f"Scraping {url}")
+    
     try:
         req = requests.get(url)
 
@@ -56,6 +65,9 @@ def scrape_cbs(url):
 
 
 def scrape_nbc(url):
+    
+    print(f"Scraping {url}")
+    
     try:
         req = requests.get(url)
 
@@ -73,6 +85,9 @@ def scrape_nbc(url):
 
 
 def scrape_cnn(url):
+    
+    print(f"Scraping {url}")
+    
     try:
         req = requests.get(url)
 
@@ -89,6 +104,9 @@ def scrape_cnn(url):
     return url, title, desc, article
 
 def scrape_bbc(url):
+    
+    print(f"Scraping {url}")
+    
     try:
         req = requests.get(url)
 
@@ -106,6 +124,9 @@ def scrape_bbc(url):
 
 
 def scrape_utd(url):
+    
+    print(f"Scraping {url}")
+    
     try:
         req = requests.get(url)
 

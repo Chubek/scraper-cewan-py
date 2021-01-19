@@ -11,7 +11,7 @@ def parse_abc():
         'https://abcnews.go.com/abcnews/usheadlines',
         'https://abcnews.go.com/abcnews/politicsheadlines'
     ]
-
+    print("Scraping ABC... Please wait...")
     return functools.reduce(operator.iconcat, [[scrape_utd(x.link.strip()) for x in feedparser.parse(y).entries] for y in feeds], [])
 
 
@@ -22,7 +22,7 @@ def parse_fox():
         'http://feeds.foxnews.com/foxnews/national',
         'http://feeds.foxnews.com/foxnews/politics'
     ]
-
+    print("Scraping FOX... Please wait...")
     return functools.reduce(operator.iconcat, [[scrape_utd(x.link.strip()) for x in feedparser.parse(y).entries] for y in feeds], [])
 
 def parse_cbs():
@@ -32,7 +32,7 @@ def parse_cbs():
         'https://www.cbsnews.com/latest/rss/politics',
         'https://www.cbsnews.com/latest/rss/world'
     ]
-
+    print("Scraping CBS... Please wait...")
     return functools.reduce(operator.iconcat, [[scrape_utd(x.link.strip()) for x in feedparser.parse(y).entries] for y in feeds], [])
 
 
@@ -42,7 +42,7 @@ def parse_nbc():
         'http://feeds.nbcnews.com/nbcnews/public/world',
         'http://feeds.nbcnews.com/nbcnews/public/politics',
     ]
-
+    print("Scraping NBC... Please wait...")
     return functools.reduce(operator.iconcat, [[scrape_utd(x.link.strip()) for x in feedparser.parse(y).entries] for y in feeds], [])
 
 
@@ -52,7 +52,7 @@ def parse_cnn():
         'http://rss.cnn.com/rss/cnn_world.rss',
         'http://rss.cnn.com/rss/cnn_us.rss',
     ]
-
+    print("Scraping CNN... Please wait...")
     return functools.reduce(operator.iconcat, [[scrape_utd(x.link.strip()) for x in feedparser.parse(y).entries] for y in feeds], [])
 
 
@@ -63,7 +63,7 @@ def parse_bbc():
         'http://feeds.bbci.co.uk/news/uk/rss.xml',
         'http://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml'
     ]
-
+    print("Scraping BBC... Please wait...")
     return functools.reduce(operator.iconcat, [[scrape_utd(x.link.strip()) for x in feedparser.parse(y).entries] for y in feeds], [])
 
 
@@ -73,6 +73,6 @@ def parse_utd():
         'http://rssfeeds.usatoday.com/UsatodaycomWorld-TopStories',
         'http://rssfeeds.usatoday.com/UsatodaycomNation-TopStories',
     ]
-
+    print("Scraping USA Today... Please wait...")
     return functools.reduce(operator.iconcat, [[scrape_utd(x.link.strip()) for x in feedparser.parse(y).entries] for y in feeds], [])
 
