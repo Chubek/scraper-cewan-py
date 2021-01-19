@@ -76,4 +76,3 @@ def parse_utd():
 
     return functools.reduce(operator.iconcat, [[scrape_utd(x.link.strip()) for x in feedparser.parse(y).entries] for y in feeds], [])
 
-print(parse_utd())

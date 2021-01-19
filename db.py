@@ -5,6 +5,7 @@ class Database(MongoClient):
 
     def __init__(self, uri, db, collection):
         self.client = super().__init__(uri)
+        print(f"Connected to {uri}")
         self.db = self.client[db]
         self.collection = self.db[collection]
 
@@ -22,8 +23,10 @@ class Database(MongoClient):
                 'desc': desc,
                 'article': article
             })
+        
+        res = self.collection.insert_many(data)
 
-        return self.collection.insert_many(data)
+        print(f"Data inserted. Result: {res}") 
 
 
     def insert_abc(self):
