@@ -17,8 +17,10 @@ class Database():
 
         for url, title, desc, article in insert_data:            
             if not article:
-                print("Article is None... Continuing...")
+                print("Article is null, continuing...")
                 continue
+            
+            print(f"Title is {title}. Length of the article is {len(article)}.")
         
             data.append({
                 'url': url,
