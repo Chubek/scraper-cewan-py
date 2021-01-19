@@ -13,16 +13,18 @@ class Database():
         
         data = []
 
-        for url, title, desc, article in insert_data:
-            if not title and not desc and not article:
-                continue
+        for quatruple in insert_data:
+            for url, title, desc, article in quatruple:            
+                if article is None:
+                    print("Article is None... Continuing...")
+                    continue
         
-            data.append({
-                'url': url,
-                'title': title,
-                'desc': desc,
-                'article': article
-            })
+                data.append({
+                    'url': url,
+                    'title': title,
+                    'desc': desc,
+                    'article': article
+                })
         
         res = self.collection.insert_many(data)
 
