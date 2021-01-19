@@ -1,10 +1,10 @@
 from pymongo import MongoClient
 from trigger import *
 
-class Database(MongoClient):
+class Database():
 
     def __init__(self, uri, db, collection):
-        self.client = super().__init__(uri)
+        self.client = MongoClient(uri)
         print(f"Connected to {uri}")
         self.db = self.client[db]
         self.collection = self.db[collection]
