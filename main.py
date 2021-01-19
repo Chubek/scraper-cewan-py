@@ -19,8 +19,8 @@ if __name__ == "__main__":
                         datefmt="%H:%M:%S")
 
     threads = list()
-    for func in functions:
-        logging.info("Main    : create and start thread %d.", str(func))
+    for index, func in enumerate(functions):
+        logging.info("Main    : create and start thread %d.", index)
         x = threading.Thread(target=lambda x: x(), args=(func,))
         threads.append(x)
         x.start()
