@@ -4,7 +4,7 @@ import threading
 
 if __name__ == "__main__":
 
-    database = Database("mongodb://chubak:4d4m4k_Dummy@localhost:27017/", "articles_db", "articles_coll")
+    database = Database("mongodb://chubak:4d4m4k_Dummy@localhost:27016/", "articles_db", "articles_coll")
 
     functions = [database.insert_abc, 
                         database.insert_bbc,
