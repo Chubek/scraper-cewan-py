@@ -16,7 +16,7 @@ class MQLDB:
         self.cursor.execute("SHOW DATABASES")       
         
         if not "sentences" in self.cursor:
-            self.cursor.executre("CREATE DATABASE sentences")
+            self.cursor.execute("CREATE DATABASE sentences")
             self.cursor.execute("USE sentences")
             self.cursor.execute("CREATE TABLE sentences_table (sentence VARCHAR(2000), label VARCHAR(50))")
             self.cursor.commit()
