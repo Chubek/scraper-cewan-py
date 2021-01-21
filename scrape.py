@@ -6,7 +6,7 @@ def scrape_abc(url):
     print(f"Scraping {url}")
 
     try:
-        req = requests.get(url)
+        req = requests.get(url, verify=False)
     except:
         print("Problem getting URL")
         return False
@@ -37,7 +37,7 @@ def scrape_fox(url):
     print(f"Scraping {url}")
 
     try:
-        req = requests.get(url)
+        req = requests.get(url, verify=False)
     except:
         print("Problem getting URL")
         return False
@@ -69,7 +69,7 @@ def scrape_cbs(url):
     print(f"Scraping {url}")
     
     try:
-        req = requests.get(url)
+        req = requests.get(url, verify=False)
     except:
         print("Problem getting URL")
         return False
@@ -97,7 +97,7 @@ def scrape_nbc(url):
     print(f"Scraping {url}")
     
     try:
-        req = requests.get(url)
+        req = requests.get(url, verify=False)
     except:
         print("Problem getting URL")
         return False
@@ -127,7 +127,7 @@ def scrape_cnn(url):
     print(f"Scraping {url}")
     
     try:
-        req = requests.get(url)
+        req = requests.get(url, verify=False)
     except:
         print("Problem getting URL")
         return False
@@ -153,7 +153,7 @@ def scrape_bbc(url):
     print(f"Scraping {url}")
     
     try:
-        req = requests.get(url)
+        req = requests.get(url, verify=False)
     except:
         print("Problem getting URL")
         return False
@@ -180,7 +180,7 @@ def scrape_utd(url):
     print(f"Scraping {url}")
 
     try:
-        req = requests.get(url)
+        req = requests.get(url, verify=False)
     except:
         print("Problem getting URL")
         return False
