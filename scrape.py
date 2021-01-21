@@ -1,5 +1,6 @@
 import requests
 from lxml.html.soupparser import fromstring
+requests.packages.urllib3.disable_warnings() 
 
 def scrape_abc(url):
 

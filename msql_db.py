@@ -2,6 +2,7 @@ import mysql.connector
 import functools
 import operator
 from trigger import *
+import re
 
 class MQLDB:
 
@@ -28,7 +29,7 @@ class MQLDB:
     def __insert(self, articles):
         sql = "INSERT INTO sentences_table (sentence, label) VALUES (%s, %s)"
 
-        vals = functools.reduce(operator.iconcat, [[(sentence, 'UNLABLED') for sentence in article[3].split(".") if sentence] for article in articles], [])
+        vals = functools.reduce(operator.iconcat, [[(sentence, 'UNLABLED') for sentence in re.split('[.!?\\-]', article[3]) if sentence] for article in articles], [])
 
         self.cursor.executemany(sql, vals)
         self.mydb.commit()
