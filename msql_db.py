@@ -14,7 +14,7 @@ class MQLDB:
 
         self.cursor = self.mydb.cursor()        
         self.cursor.execute("SHOW DATABASES")
-        print([l[0] for l in self.cursor.fetchall()])
+        print(not 'sentences' in [l[0] for l in self.cursor.fetchall()])
         if not "sentences" in [l[0] for l in self.cursor.fetchall()]:
             self.cursor.execute("CREATE DATABASE sentences")
             self.cursor.execute("USE sentences")
