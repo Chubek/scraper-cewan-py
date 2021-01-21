@@ -27,13 +27,15 @@ class MQLDB:
             self.mydb.commit()
 
     def __insert(self, articles):
+        print(f"Got {len(articles)}")
         sql = "INSERT INTO sentences_table (sentence, label) VALUES (%s, %s)"
 
         vals = functools.reduce(operator.iconcat, [[(sentence, 'UNLABLED') for sentence in re.split('[.!?\\-]', article[3]) if sentence] for article in articles], [])
-
+        
         self.cursor.executemany(sql, vals)
         self.mydb.commit()
 
+        print(f"Inserted {len(vals)}")
 
     def insert_abc(self):
         res = parse_abc()

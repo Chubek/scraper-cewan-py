@@ -27,7 +27,7 @@ def scrape_abc(url):
     try:
         article = "\n".join([x.strip() for x in tree.xpath("//section[contains(@class, 'Article__Content story')]/p/text()")])
     except:
-        article = None
+        return
 
     return url, title, desc, article
 
@@ -59,7 +59,7 @@ def scrape_fox(url):
     try:
         article = "\n".join([x.strip() for x in tree.xpath("//div[contains(@class, 'article-body')]/p/text()")])
     except:
-        article = None
+        return
 
 
     return url, title, desc, article
@@ -87,7 +87,7 @@ def scrape_cbs(url):
     try:
         article = "\n".join([x.strip() for x in tree.xpath("//section[contains(@class, 'content__body')]/p/text()")])
     except:
-        article = None
+        return
 
     return url, title, desc, article
 
@@ -118,7 +118,7 @@ def scrape_nbc(url):
     try:
         article = "\n".join([x.strip() for x in tree.xpath("//div[contains(@class, 'article-body__content')]/p/text()")])
     except:
-        article = None
+        return
 
     return url, title, desc, article
 
@@ -145,7 +145,7 @@ def scrape_cnn(url):
     try:
         article = "\n".join([x.strip() for x in tree.xpath("//div[contains(@class, 'body')]/div/text()")])
     except:
-        article = None
+        return
 
     return url, title, desc, article
 
@@ -171,7 +171,7 @@ def scrape_bbc(url):
     try:
         article = "\n".join([x.strip() for x in tree.xpath("//article[contains(@class, 'Article')]/div/div/p/text()")])
     except:
-        article = None
+        return
 
     return url, title, desc, article
 
@@ -198,7 +198,7 @@ def scrape_utd(url):
     try:
         article = "\n".join([x.strip() for x in tree.xpath("//div[contains(@class, 'gnt_ar_b')]/p/text()")])
     except:
-        article = None
+        return
 
     return url, title, desc, article
 
