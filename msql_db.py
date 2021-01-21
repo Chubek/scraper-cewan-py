@@ -6,23 +6,23 @@ from trigger import *
 class MQLDB:
 
     def __init__(self, username, password):
-        mydb = mysql.connector.connect(
+        self.mydb = mysql.connector.connect(
             host="localhost",
             user=username,
             password=password
         )
 
-        self.cursor = mydb.cursor()        
+        self.cursor = self.mydb.cursor()        
         self.cursor.execute("SHOW DATABASES")       
         
         if not "sentences" in self.cursor:
             self.cursor.execute("CREATE DATABASE sentences")
             self.cursor.execute("USE sentences")
             self.cursor.execute("CREATE TABLE sentences_table (sentence VARCHAR(2000), label VARCHAR(50))")
-            self.cursor.commit()
+            self.mydb.commit()
         else:
             self.cursor.execute("USE sentences")
-            self.cursor.commit()
+            self.mydb.commit()
 
     def __insert(self, articles):
         sql = "INSERT INTO sentences_table (sentence, label) VALUES (%s, %s)"
@@ -30,7 +30,7 @@ class MQLDB:
         vals = functools.reduce(operator.iconcat, [[(sentence, 'UNLABLED') for sentence in article[3].split(".") if sentence] for article in articles], [])
 
         self.cursor.executemany(sql, vals)
-        self.cursor.commit()
+        self.mydb.commit()
 
 
     def insert_abc(self):
