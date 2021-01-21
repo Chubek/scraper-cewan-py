@@ -1,10 +1,14 @@
-from db import Database
+from msql_db import MQLDB
 import logging
 import threading
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 if __name__ == "__main__":
 
-    database = Database("mongodb://chubak:4d4m4k_Dummy@localhost:27016/", "articles_db", "articles_coll")
+    database = MQLDB(os.environ.get("MYSQL_USER"), os.environ.get("MYSQL_PASS"))
 
     functions = [database.insert_abc, 
                         database.insert_bbc,
