@@ -20,7 +20,7 @@ class MQLDB:
             print("Database doesn't exist, creating...")
             self.cursor.execute("CREATE DATABASE sentences_news")
             self.cursor.execute("USE sentences_news")
-            self.cursor.execute("CREATE TABLE sentences_table_news (sentence_id int NOT NULL AUTO_INCREMENT, sentence VARCHAR(2000), label VARCHAR(50))")
+            self.cursor.execute("CREATE TABLE sentences_table_news (sentence_id int NOT NULL AUTO_INCREMENT PRIMARY KEY, sentence VARCHAR(2000), label VARCHAR(50))")
             self.mydb.commit()
         else:
             print("Database found, selecting sentences_news...")
