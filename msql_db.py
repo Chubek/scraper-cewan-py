@@ -25,6 +25,7 @@ class MQLDB:
         else:
             print("Database found, selecting sentences_news...")
             self.cursor.execute("USE sentences_news")
+            self.cursor.execute("CREATE TABLE IF NOT EXISTS sentences_table_news (sentence_id int NOT NULL AUTO_INCREMENT PRIMARY KEY, sentence VARCHAR(2000), label VARCHAR(50))")
             self.mydb.commit()
 
         self.all = None
