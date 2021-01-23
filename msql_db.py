@@ -16,22 +16,22 @@ class MQLDB:
 
         self.cursor = self.mydb.cursor()        
         self.cursor.execute("SHOW DATABASES")
-        if not 'sentences' in [l[0] for l in self.cursor.fetchall()]:
+        if not 'sentences_news' in [l[0] for l in self.cursor.fetchall()]:
             print("Database doesn't exist, creating...")
-            self.cursor.execute("CREATE DATABASE sentences")
-            self.cursor.execute("USE sentences")
-            self.cursor.execute("CREATE TABLE sentences_table_new (sentence_id int NOT NULL AUTO_INCREMENT, sentence VARCHAR(2000), label VARCHAR(50))")
+            self.cursor.execute("CREATE DATABASE sentences_news")
+            self.cursor.execute("USE sentences_news")
+            self.cursor.execute("CREATE TABLE sentences_table_news (sentence_id int NOT NULL AUTO_INCREMENT, sentence VARCHAR(2000), label VARCHAR(50))")
             self.mydb.commit()
         else:
-            print("Database found, selecting...")
-            self.cursor.execute("USE sentences")
+            print("Database found, selecting sentences_news...")
+            self.cursor.execute("USE sentences_news")
             self.mydb.commit()
 
         self.all = None
 
     def __insert(self, articles):
         print(f"Got {len(articles)}")
-        sql = "INSERT INTO sentences_table_new (sentence, label) VALUES (%s, %s)"
+        sql = "INSERT INTO sentences_table_news (sentence, label) VALUES (%s, %s)"
 
         vals = functools.reduce(operator.iconcat, [[(sentence, 'UNLABLED') for sentence in re.split('[.!?\\-]', article[3]) if sentence] for article in articles], [])
         
@@ -78,7 +78,7 @@ class MQLDB:
 
 
     def select_rand(self):
-        self.cursor.execute("SELECT * FROM sentences_table_new WHERE label = 'UNLABLED' ORDER BY RAND() limit 50")
+        self.cursor.execute("SELECT * FROM sentences_table_news WHERE label = 'UNLABLED' ORDER BY RAND() limit 50")
 
         self.all = self.cursor.fetchall()
 
@@ -93,7 +93,7 @@ class MQLDB:
         return samp
 
     def label_sample_sentence(self, sentence_tuple):
-        update = f"UPDATE sentences_table_new SET label = {sentence_tuple[2]} WHERE sentence_id = {sentence_tuple[0]}"
+        update = f"UPDATE sentences_table_news SET label = {sentence_tuple[2]} WHERE sentence_id = {sentence_tuple[0]}"
 
         self.cursor.execute(update)
 
